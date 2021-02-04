@@ -1,65 +1,7 @@
-<input type="file" id="fileinput" />
-
-<label for="myCheck">Checkbox:</label> 
-<input type="checkbox" id="myCheck" onclick="myFunction()">
-
-<script>
-
-var output=[];
-//output.length=3;
-    //var data = output;
-    function download_csv(evt) {
-	var f;
-	    f = evt.target.files[0]; 
-    if (f) {
-      var r = new FileReader();
-	
-      r.onload = function(e) { 
-          var contents = e.target.result;
-          //document.write("File Uploaded! <br />" + "name: " + f.name + "<br />" + "content: " + contents + "<br />" + "type: " + f.type + "<br />" + "size: " + f.size + " bytes <br />");
-
-          var lines = contents.split("\n");
-	
-          for (var i=0; i<lines.length; i++){
-            output[i]=lines[i].split(",");
-          }
-
-	// Get the checkbox
-  	var checkBox = document.getElementById("myCheck");
-
-	if (checkBox.checked == true){
-          for (var i=0; i<lines.length; i++){
-            output[i][0]++;
-					    }
-        		              }
-	
-
-    	var csv = 'Name,Title\n';
-
-    for (var x=0; x<output.length; x++){
-    console.log(output[x]);
-            csv += output[x].join(",");
-	csv += "\n";
-    }
-    console.log(output);
-    console.log(output.length);
-    console.log(csv);
-    var hiddenElement = document.createElement('a');
-    hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
-    hiddenElement.target = '_blank';
-    hiddenElement.download = 'new_file.csv';
-    hiddenElement.click();
-     }
-      r.readAsText(f);
-
-    } else { 
-      alert("Failed to load file");
-    }
-}
-
-document.getElementById('fileinput').addEventListener('change', download_csv);
-
-
-
-
-</script>
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Hello World</h1>
+<p>I'm hosted with GitHub Pages.</p>
+</body>
+</html>
